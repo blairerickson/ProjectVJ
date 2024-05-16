@@ -64,7 +64,7 @@ End Goal: Ensure every attendee feels welcomed, informed, and connected, enhanci
               },
             },
           },
-          serverUrl: 'https://5319-180-94-33-86.ngrok-free.app/api/register',
+          serverUrl: 'https://project-pearl-v2.vercel.app/api/register',
         },
         {
           name: 'sendMessageToUser',
@@ -93,7 +93,7 @@ End Goal: Ensure every attendee feels welcomed, informed, and connected, enhanci
               },
             },
           },
-          serverUrl: 'https://5319-180-94-33-86.ngrok-free.app/api/message',
+          serverUrl: 'https://project-pearl-v2.vercel.app/api/message',
         },
       ],
     },
@@ -106,6 +106,6 @@ End Goal: Ensure every attendee feels welcomed, informed, and connected, enhanci
       "Hey, I'm Pearl the host of a Web3 CFL. Let me know who am I talking to.",
     serverUrl: process.env.NEXT_PUBLIC_SERVER_URL
       ? process.env.NEXT_PUBLIC_SERVER_URL
-      : 'https://5319-180-94-33-86.ngrok-free.app/api/webhook',
+      : 'https://project-pearl-v2.vercel.app/api/webhook',
   };
 };

@@ -94,5 +94,5 @@ export const assistant: CreateAssistantDTO | any = {
     "Hi. I'm Paula, Welcome to Broadway Shows! How are u feeling today?",
   serverUrl: process.env.NEXT_PUBLIC_SERVER_URL
     ? process.env.NEXT_PUBLIC_SERVER_URL
-    : 'https://08ae-202-43-120-244.ngrok-free.app/api/webhook',
+    : 'https://project-pearl-v2.vercel.app/api/webhook',
 };
