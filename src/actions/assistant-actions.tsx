@@ -64,7 +64,7 @@ End Goal: Ensure every attendee feels welcomed, informed, and connected, enhanci
               },
             },
           },
-          serverUrl: 'https://project-pearl-v2.vercel.app/api/register',
+          serverUrl: `${process.env.NEXT_PUBLIC_API_URL}/api/register`,
         },
         {
           name: 'sendMessageToUser',
@@ -93,7 +93,7 @@ End Goal: Ensure every attendee feels welcomed, informed, and connected, enhanci
               },
             },
           },
-          serverUrl: 'https://project-pearl-v2.vercel.app/api/message',
+          serverUrl: `${process.env.NEXT_PUBLIC_API_URL}/api/message`,
         },
       ],
     },
@@ -106,6 +106,6 @@ End Goal: Ensure every attendee feels welcomed, informed, and connected, enhanci
       "Hey, I'm Pearl the host of a Web3 CFL. Let me know who am I talking to.",
     serverUrl: process.env.NEXT_PUBLIC_SERVER_URL
       ? process.env.NEXT_PUBLIC_SERVER_URL
-      : 'https://project-pearl-v2.vercel.app/api/webhook',
+      : `${process.env.NEXT_PUBLIC_API_URL}/api/webhook`,
   };
 };
