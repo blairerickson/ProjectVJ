@@ -125,8 +125,8 @@ End Goal: Ensure every attendee feels welcomed, informed, and connected, enhanci
     client.messages
       .create({
         body: aiMessage,
-        from: 'whatsapp:+14155238886',
-        to: `whatsapp:${phone_number}`,
+        from: process.env.TWILIO_PHONE_NUMBER,
+        to: `${phone_number}`,
       })
       .then((message: any) => console.log(message.sid));
 

@@ -33,8 +33,8 @@ export async function POST(req: Request) {
       client.messages
         .create({
           body: data.message.functionCall.parameters.message,
-          from: 'whatsapp:+14155238886',
-          to: `whatsapp:${user.phone_number}`,
+          from: process.env.TWILIO_PHONE_NUMBER,
+          to: `${user.phone_number}`,
         })
         .then((message: any) => console.log(message.sid));
     }
