@@ -13,10 +13,6 @@ export async function POST(req: Request) {
   await connectDB();
 
   try {
-    if (req.method !== 'POST') {
-      return NextResponse.json({ error: 'Method Not Allowed' });
-    }
-
     const data: Message = await req.json();
 
     if (data.message.type == 'function-call') {
@@ -24,10 +20,12 @@ export async function POST(req: Request) {
         name: data.message.functionCall.parameters.receiverName,
       });
 
-      if (!user)
+      if (!user) {
+        console.log('LOGS: User not found. Your message cannot be delivered.');
         return NextResponse.json({
-          result: 'Your message cannot be delivered. User not found.',
+          error: 'Your message cannot be delivered. User not found.',
         });
+      }
 
       client.messages
         .create({
@@ -40,6 +38,7 @@ export async function POST(req: Request) {
     // const user = new userModel(data);
     // await user.save();
 
+    console.log('LOGS: Your message has been sent.');
     return NextResponse.json({ result: 'Your message has been sent.' });
   } catch (error) {
     console.error('Error processing POST request:', error);

@@ -23,6 +23,7 @@ const userSchema = new mongoose.Schema(
         interactions: { type: [interactionsSchema] },
       },
     ],
+    messages: [{ type: String }],
   },
   {
     timestamps: true,
