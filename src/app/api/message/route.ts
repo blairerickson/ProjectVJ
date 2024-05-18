@@ -13,6 +13,7 @@ export async function POST(req: Request) {
   await connectDB();
 
   try {
+    console.log('🖥️ LOGS: POST /api/message request received.');
     const data: Message = await req.json();
 
     if (data.message.type == 'function-call') {
@@ -21,7 +22,9 @@ export async function POST(req: Request) {
       });
 
       if (!user) {
-        console.log('LOGS: User not found. Your message cannot be delivered.');
+        console.log(
+          '🖥️ LOGS: User not found. Your message cannot be delivered.'
+        );
         return NextResponse.json({
           error: 'Your message cannot be delivered. User not found.',
         });
@@ -38,7 +41,7 @@ export async function POST(req: Request) {
     // const user = new userModel(data);
     // await user.save();
 
-    console.log('LOGS: Your message has been sent.');
+    console.log('🖥️ LOGS: Your message has been sent.');
     return NextResponse.json({ result: 'Your message has been sent.' });
   } catch (error) {
     console.error('Error processing POST request:', error);

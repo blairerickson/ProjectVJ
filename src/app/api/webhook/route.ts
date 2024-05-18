@@ -7,23 +7,24 @@ export async function POST(req: Request) {
   await connectDB();
 
   try {
+    console.log('🖥️ LOGS: POST /api/webhook request received.');
     const data = await req.json();
 
     if (data.message.type === 'end-of-call-report') {
       const callId = data.message.call.id;
       const call = await tempModel.findOne({ callId });
-      const user = await userModel.findById(call.userId);
+      const user = await userModel.findById(call?.userId);
 
       if (user) {
         user.messages.push(data.message.summary);
         await user.save();
-        console.log('LOGS: Message saved');
+        console.log('🖥️ LOGS: Message saved');
       } else {
-        console.log('LOGS: User not found');
+        console.log('🖥️ LOGS: User not found');
       }
     }
 
-    console.log('LOGS: Done ✅');
+    console.log('🖥️ LOGS: Done ✅');
     return NextResponse.json({
       msg: 'Done ✅',
     });

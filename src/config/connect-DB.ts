@@ -1,13 +1,7 @@
 import mongoose, { ConnectOptions, Mongoose } from 'mongoose';
 import { envConfig } from './env.config';
 
-const DATABASE_URL: string = envConfig.database.url;
-
-if (!DATABASE_URL) {
-  throw new Error(
-    'Please define the DATABASE_URL environment variable inside .env.local'
-  );
-}
+const DATABASE_URL = envConfig.database.url;
 
 interface CachedMongoose {
   conn: Mongoose | null;
@@ -32,6 +26,12 @@ if (!cached) {
 async function connectDB(): Promise<Mongoose> {
   if (cached.conn) {
     return cached.conn;
+  }
+
+  if (!DATABASE_URL) {
+    throw new Error(
+      'Please define the DATABASE_URL environment variable inside .env.local'
+    );
   }
 
   if (!cached.promise) {

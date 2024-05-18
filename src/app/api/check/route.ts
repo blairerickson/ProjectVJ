@@ -8,11 +8,12 @@ export async function POST(req: Request) {
   await connectDB();
 
   try {
+    console.log('🖥️ LOGS: POST /api/check request received.');
     const data: Message = await req.json();
 
     if (!data.message?.functionCall?.parameters.name) {
       console.log(
-        'LOGS: Name not provided. Please provide all required fields.'
+        '🖥️ LOGS: Name not provided. Please provide all required fields.'
       );
       return NextResponse.json({
         error: 'Please provide all required fields.',
@@ -25,7 +26,7 @@ export async function POST(req: Request) {
     });
 
     if (!userExists) {
-      console.log('LOGS: User does not exist. Please register first.');
+      console.log('🖥️ LOGS: User does not exist. Please register first.');
       return NextResponse.json({
         error: 'User does not exist. Please register first.',
       });
@@ -37,7 +38,7 @@ export async function POST(req: Request) {
       userId: userExists._id,
     });
 
-    console.log('LOGS: User found.');
+    console.log('🖥️ LOGS: User found.');
     return NextResponse.json({
       result: 'Success! User found.',
     });

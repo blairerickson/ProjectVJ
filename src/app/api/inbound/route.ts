@@ -48,6 +48,7 @@ Values and Ideals: Familiarize yourself with the values of Web3 CFL, emphasizing
 End Goal: Ensure every attendee feels welcomed, informed, and connected, enhancing their experience at the event.`;
 
   try {
+    console.log('🖥️ LOGS: POST /api/inbound request received.');
     const data = await req.formData();
     const message = data.get('Body')?.toString();
     const phone_number = data.get('WaId');
@@ -101,7 +102,7 @@ End Goal: Ensure every attendee feels welcomed, informed, and connected, enhanci
     }
 
     if (!message) {
-      console.log('LOGS: Message cannot be empty.');
+      console.log('🖥️ LOGS: Message cannot be empty.');
       return NextResponse.json({ error: 'Message cannot be empty.' });
     }
 
@@ -132,7 +133,7 @@ End Goal: Ensure every attendee feels welcomed, informed, and connected, enhanci
     // const user = new userModel(data);
     // await user.save();
 
-    console.log('LOGS: Your message has been sent.');
+    console.log('🖥️ LOGS: Your message has been sent.');
     return NextResponse.json({ result: 'Your message has been sent.' });
   } catch (error) {
     console.error('Error processing POST request:', error);

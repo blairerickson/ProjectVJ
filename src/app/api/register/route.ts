@@ -7,6 +7,7 @@ export async function POST(req: Request) {
   await connectDB();
 
   try {
+    console.log('🖥️ LOGS: POST /api/register request received.');
     const data: Message = await req.json();
 
     if (
@@ -15,7 +16,7 @@ export async function POST(req: Request) {
       !data.message?.functionCall?.parameters.interests
     ) {
       console.log(
-        'LOGS: Registration failed. Please provide all required fields.'
+        '🖥️ LOGS: Registration failed. Please provide all required fields.'
       );
       return NextResponse.json({
         error: 'Registration failed. Please provide all required fields.',
@@ -28,7 +29,7 @@ export async function POST(req: Request) {
     });
 
     if (userExists) {
-      console.log('LOGS: Registration failed. User already exists.');
+      console.log('🖥️ LOGS: Registration failed. User already exists.');
       return NextResponse.json({
         error: 'Registration failed. User already exists.',
       });
@@ -37,7 +38,9 @@ export async function POST(req: Request) {
     const user = new userModel(data.message.functionCall.parameters);
     await user.save();
 
-    console.log('LOGS: Registration successful. Thank you for registering! 🎉');
+    console.log(
+      '🖥️ LOGS: Registration successful. Thank you for registering! 🎉'
+    );
     return NextResponse.json({
       result: 'Registration successful. Thank you for registering! 🎉',
     });
