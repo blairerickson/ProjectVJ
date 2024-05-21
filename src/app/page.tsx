@@ -1,3 +1,4 @@
+import '../styles/global.css'; // Import the global CSS
 import { createUser, getUsers } from '@/actions/user-actions';
 import AssistantWrapper from '@/components/assistant-canvas';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -14,6 +15,8 @@ export default async function Home() {
         </h1>
       </header>
 
+      <AssistantWrapper />
+
       <ScrollArea className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-6 mb-8">
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {users.map((user: UserData, index: number) => (
@@ -22,42 +25,48 @@ export default async function Home() {
               className="bg-white rounded-lg shadow p-4 border border-gray-200"
             >
               <div>
-                <h1 className="text-sm font-semibold text-gray-800">name:</h1>
-                <p className="text-sm text-gray-600">{user.name}</p>
+                <h1 className="text-lg font-semibold text-gray-800">{user.name}</h1>
               </div>
               <div>
-                <h1 className="text-sm font-semibold text-gray-800">email:</h1>
+                <h2 className="text-sm font-semibold text-gray-800">Email:</h2>
                 <p className="text-sm text-gray-600">{user.email}</p>
               </div>
- 
               <div>
-                <h1 className="text-sm font-semibold text-gray-800">phone:</h1>
+                <h2 className="text-sm font-semibold text-gray-800">Phone:</h2>
                 <p className="text-sm text-gray-600">{user.phone_number}</p>
               </div>
               <div>
-                <h1 className="text-sm font-semibold text-gray-800">
-                  social style:
-                </h1>
+                <h2 className="text-sm font-semibold text-gray-800">Social Style:</h2>
                 <p className="text-sm text-gray-600">{user.social_styles}</p>
               </div>
               <div>
-                <h1 className="text-sm font-semibold text-gray-800">
-                  Interests:
-                </h1>
-                <p className="text-sm text-gray-600">{user.interests}</p>
+                <h2 className="text-sm font-semibold text-gray-800">Interests:</h2>
+                <p className="text-sm text-gray-600">{user.interests.join(', ')}</p>
               </div>
-               <div>
-                <h1 className="text-sm font-semibold text-gray-800">
-                  status:
-                </h1>
+              <div>
+                <h2 className="text-sm font-semibold text-gray-800">Status:</h2>
                 <p className="text-sm text-gray-600">{user.status}</p>
+              </div>
+              <div>
+                <label htmlFor={`messages-toggle-${index}`} className="block text-sm font-semibold text-gray-800">
+                  Messages:
+                </label>
+                <input type="checkbox" id={`messages-toggle-${index}`} className="hidden" />
+                <label htmlFor={`messages-toggle-${index}`} className="block text-blue-500 hover:underline cursor-pointer">
+                  Show/Hide Messages
+                </label>
+                <div className="mt-2 collapsible-content">
+                  {user.messages.map((message, idx) => (
+                    <div key={idx} className="bg-gray-100 p-2 rounded-lg mb-2">
+                      <p className="text-sm text-gray-700">{message}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
         </div>
       </ScrollArea>
-
-      <AssistantWrapper />
 
       <footer className="w-full py-4 bg-white shadow-md mt-4">
         <p className="text-center text-gray-500">

@@ -1,0 +1,7 @@
+input[type="checkbox"]:checked ~ .collapsible-content {
+    display: block;
+}
+
+.collapsible-content {
+    display: none;
+}
