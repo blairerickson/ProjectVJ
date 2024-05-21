@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    padding: 20px;
+}
+
+.linkCard {
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    flex: 1;
+    margin: 0 20px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+    .linkCard:hover {
+        transform: scale(1.05);
+    }
+
+.icon {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.heading {
+    margin: 10px 0;
+    font-size: 1.5em;
+}
