@@ -18,6 +18,7 @@ const userSchema = new mongoose.Schema(
     email: { type: String },
     interests: { type: [String] },
     social_styles: { type: String },
+    status: { type: String },
     eventHistory: [
       {
         interactions: { type: [interactionsSchema] },

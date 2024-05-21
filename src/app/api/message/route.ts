@@ -34,7 +34,7 @@ export async function POST(req: Request) {
         .create({
           body: data.message.functionCall.parameters.message,
           from: process.env.TWILIO_PHONE_NUMBER,
-          to: `${user.phone_number}`,
+          to: `+${user.phone_number}`,
         })
         .then((message: any) => console.log(message.sid));
     }

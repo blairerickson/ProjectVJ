@@ -4,4 +4,5 @@ export interface UserData {
   email: string;
   interests: string[];
   social_styles: string;
+  status: string;
 }

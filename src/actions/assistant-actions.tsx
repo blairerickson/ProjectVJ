@@ -118,11 +118,11 @@ End Goal: Ensure every attendee feels welcomed, informed, and connected, enhanci
       ],
     },
     voice: {
-      provider: '11labs',
-      voiceId: 'paula',
+      provider: 'playht',
+      voiceId: 's3://voice-cloning-zero-shot/90217770-a480-4a91-b1ea-df00f4d4c29d/original/manifest.json',
     },
     firstMessage:
-      "Hey, I'm Pearl the host of a Web3 CFL. Let me know who am I talking to.",
+      "Pearl here, what do you need?",
     serverUrl: process.env.NEXT_PUBLIC_SERVER_URL
       ? process.env.NEXT_PUBLIC_SERVER_URL
       : `${process.env.NEXT_PUBLIC_API_URL}/api/webhook`,

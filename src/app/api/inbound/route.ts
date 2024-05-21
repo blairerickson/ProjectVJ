@@ -51,7 +51,8 @@ End Goal: Ensure every attendee feels welcomed, informed, and connected, enhanci
     console.log('🖥️ LOGS: POST /api/inbound request received.');
     const data = await req.formData();
     const message = data.get('Body')?.toString();
-    const phone_number = data.get('WaId');
+      const phone_number = data.get('From');
+      console.log('🖥️ LOGS: Phone number:', data);
 
     // check if user already exists
     const userExists = await userModel.findOne({
@@ -126,7 +127,7 @@ End Goal: Ensure every attendee feels welcomed, informed, and connected, enhanci
       .create({
         body: aiMessage,
         from: process.env.TWILIO_PHONE_NUMBER,
-        to: `${phone_number}`,
+        to: `+${phone_number}`,
       })
       .then((message: any) => console.log(message.sid));
 
