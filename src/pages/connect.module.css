@@ -1,33 +1,43 @@
 .container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     height: 100vh;
     background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
     padding: 20px;
+    flex-wrap: wrap;
 }
 
 .linkCard {
     text-align: center;
     text-decoration: none;
     color: #333;
-    flex: 1;
-    margin: 0 20px;
+    flex: 0 1 300px;
+    margin: 20px;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 10px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
     .linkCard:hover {
-        transform: scale(1.05);
+        transform: translateY(-10px);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
     }
 
 .icon {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     margin-bottom: 10px;
+    color: #555;
 }
 
 .heading {
     margin: 10px 0;
     font-size: 1.5em;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: bold;
+    color: #555;
 }

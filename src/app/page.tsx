@@ -11,7 +11,7 @@ export default async function Home() {
     <main className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
       <header className="w-full py-6 bg-white shadow-md mb-4">
         <h1 className="text-5xl font-extrabold text-center text-black">
-          A24 Party - the Kimball Terrace - Sundance 2025
+          A24 Party - the Kimball Terrace - Sundance 2024
         </h1>
       </header>
 
