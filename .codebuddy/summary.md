@@ -1,32 +1,26 @@
-## Project Summary
+# Project Summary
 
-### Overview
-This project is a Next.js application using various libraries and frameworks such as React, Tailwind CSS, MongoDB, and more. It includes a variety of files for configuration, API routes, components, models, and actions.
+## Overview
+- **Languages**: JavaScript, TypeScript
+- **Frameworks**: Next.js
+- **Main Libraries**: Font Awesome, Radix UI, Lucide React, Mongoose, OpenAI, Twilio
+- **Tools**: ESLint, PostCSS, Tailwind CSS
 
-### Purpose
-The project serves as a frontend application for an AI assistant named Pearl. It includes components for interacting with users, API routes for handling requests, and models for storing user data.
+## Purpose
+The project is a Next.js application named "pearl-frontend" that serves as an AI event host assistant. It includes API routes for checking attendees, registering users, sending messages, and interacting with the assistant. The project uses various libraries for UI components, communication, and database management.
 
-### Relevant Files
+## Relevant Files
 - `/next.config.mjs`
 - `/package.json`
 - `/tsconfig.json`
+- `/public/next.svg`
 - `/src/actions/assistant-actions.tsx`
 - `/src/app/layout.tsx`
 - `/src/app/api/check/route.ts`
 - `/src/components/assistant-button.tsx`
-- `/src/config/connect-DB.ts`
-- `/src/models/user-model.ts`
 
-### Source Files
-- Source files can be found in the `/src` directory.
-- Components are located in `/src/components`.
-- API routes are in `/src/app/api`.
-- Models are in `/src/models`.
-- Actions are in `/src/actions`.
-- Configuration files are in `/src/config`.
+## Directories
+- **Source Files**: Located in the `/src` directory
+- **Documentation Files**: Located in the `/docs` directory
 
-### Documentation
-- Documentation can be found in the `/docs` directory.
-- The main README file is located at the root of the project.
-
-This project combines frontend development with backend logic to create an interactive AI assistant application using Next.js and various supporting libraries and tools.
+This project leverages Next.js for server-side rendering and provides a structured approach to building an AI assistant for event management. The files and directories mentioned above play a crucial role in the configuration, building, and functionality of the application.
