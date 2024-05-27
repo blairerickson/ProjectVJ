@@ -1,20 +1,34 @@
-'use client';
+import { changeIframeContent } from '@/assistants/assistant';
+import { FC, useState } from 'react';
 
-import React from 'react';
-import { AssistantButton } from './assistant-button';
-import { useVapi } from '@/hooks/useVapi';
+interface AssistantWrapperProps {
+  changeIframeContent: (url: string) => void;
+}
 
-const AssistantWrapper = () => {
-  const { toggleCall, callStatus, audioLevel, activeTranscript } = useVapi();
+const AssistantWrapper: FC<AssistantWrapperProps> = ({ changeIframeContent }) => {
+  const [iframeUrl, setIframeUrl] = useState<string>('');
+
+  // Code to handle AI interactions
+  // When AI decides to change the iframe content, it calls changeIframeContent(url)
+  // Example:
+  // changeIframeContent('https://www.youtube.com');
+
+  const handleIframeContentChange = (url: string) => {
+    setIframeUrl(url);
+    changeIframeContent(url);
+  };
 
   return (
-    <div className='mt-auto'>
-      <AssistantButton
-        audioLevel={audioLevel}
-        callStatus={callStatus}
-        toggleCall={toggleCall}
-      ></AssistantButton>
-      <p className='text-xs mt-5'>{callStatus}</p>
+    <div>
+      {/* Existing Assistant Button Code */}
+      <button onClick={() => handleIframeContentChange('https://www.youtube.com')}>
+        Change Iframe Content
+      </button>
+      <iframe
+        src={iframeUrl}
+        className="w-full h-96"
+        title="AI Controlled Frame"
+      ></iframe>
     </div>
   );
 };

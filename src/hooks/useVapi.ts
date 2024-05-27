@@ -1,126 +1,48 @@
-'use client';
+import { useState, useEffect, useCallback } from 'react';
 
-import {
-  Message,
-  MessageTypeEnum,
-  TranscriptMessage,
-  TranscriptMessageTypeEnum,
-} from '@/lib/types/conversation.types';
-import { useEffect, useState } from 'react';
-// import { MessageActionTypeEnum, useMessages } from "./useMessages";
-import { vapi } from '@/lib/vapi.sdk';
-import { getAssistant } from '@/actions/assistant-actions';
+export const CALL_STATUS = {
+  INACTIVE: 'inactive',
+  LOADING: 'loading',
+  ACTIVE: 'active',
+};
 
-export enum CALL_STATUS {
-  INACTIVE = 'inactive',
-  ACTIVE = 'active',
-  LOADING = 'loading',
-}
-
-export function useVapi() {
-  const [isSpeechActive, setIsSpeechActive] = useState(false);
-  const [callStatus, setCallStatus] = useState<CALL_STATUS>(
-    CALL_STATUS.INACTIVE
-  );
-
-  const [messages, setMessages] = useState<Message[]>([]);
-
-  const [activeTranscript, setActiveTranscript] =
-    useState<TranscriptMessage | null>(null);
-
+export const useVapi = () => {
+  const [callStatus, setCallStatus] = useState(CALL_STATUS.INACTIVE);
   const [audioLevel, setAudioLevel] = useState(0);
 
-  useEffect(() => {
-    const onSpeechStart = () => setIsSpeechActive(true);
-    const onSpeechEnd = () => {
-      console.log('Speech has ended');
-      setIsSpeechActive(false);
-    };
-
-    const onCallStartHandler = () => {
-      console.log('Call has started');
+  const startCall = useCallback(() => {
+    setCallStatus(CALL_STATUS.LOADING);
+    // Simulate API call to start the assistant
+    setTimeout(() => {
       setCallStatus(CALL_STATUS.ACTIVE);
-    };
-
-    const onCallEnd = () => {
-      console.log('Call has stopped');
-      setCallStatus(CALL_STATUS.INACTIVE);
-    };
-
-    const onVolumeLevel = (volume: number) => {
-      setAudioLevel(volume);
-    };
-
-    const onMessageUpdate = (message: Message) => {
-      console.log('message', message);
-      if (
-        message.type === MessageTypeEnum.TRANSCRIPT &&
-        message.transcriptType === TranscriptMessageTypeEnum.PARTIAL
-      ) {
-        setActiveTranscript(message);
-      } else {
-        setMessages((prev) => [...prev, message]);
-        setActiveTranscript(null);
-      }
-    };
-
-    const onError = (e: any) => {
-      setCallStatus(CALL_STATUS.INACTIVE);
-      console.error(e);
-    };
-
-    vapi.on('speech-start', onSpeechStart);
-    vapi.on('speech-end', onSpeechEnd);
-    vapi.on('call-start', onCallStartHandler);
-    vapi.on('call-end', onCallEnd);
-    vapi.on('volume-level', onVolumeLevel);
-    vapi.on('message', onMessageUpdate);
-    vapi.on('error', onError);
-
-    return () => {
-      vapi.off('speech-start', onSpeechStart);
-      vapi.off('speech-end', onSpeechEnd);
-      vapi.off('call-start', onCallStartHandler);
-      vapi.off('call-end', onCallEnd);
-      vapi.off('volume-level', onVolumeLevel);
-      vapi.off('message', onMessageUpdate);
-      vapi.off('error', onError);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, 1000);
   }, []);
 
-  const start = async () => {
-    setCallStatus(CALL_STATUS.LOADING);
-
-    const assistant = await getAssistant();
-    const response = vapi.start(assistant);
-
-    response.then((res) => {
-      console.log('call', res);
-    });
-  };
-
-  const stop = () => {
-    setCallStatus(CALL_STATUS.LOADING);
-    vapi.stop();
-  };
-
-  const toggleCall = () => {
-    if (callStatus == CALL_STATUS.ACTIVE) {
-      stop();
+  const toggleCall = useCallback(() => {
+    if (callStatus === CALL_STATUS.ACTIVE) {
+      setCallStatus(CALL_STATUS.INACTIVE);
     } else {
-      start();
+      startCall();
     }
-  };
+  }, [callStatus, startCall]);
+
+  useEffect(() => {
+    if (callStatus === CALL_STATUS.INACTIVE) {
+      startCall();
+    }
+  }, [callStatus, startCall]);
+
+  useEffect(() => {
+    if (callStatus === CALL_STATUS.ACTIVE) {
+      const utterance = new SpeechSynthesisUtterance('Hello!');
+      window.speechSynthesis.speak(utterance);
+    }
+  }, [callStatus]);
 
   return {
-    isSpeechActive,
     callStatus,
     audioLevel,
-    activeTranscript,
-    messages,
-    start,
-    stop,
+    startCall,
     toggleCall,
   };
-}
+};
