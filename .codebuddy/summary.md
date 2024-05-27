@@ -1,26 +1,32 @@
 ## Project Summary
 
 ### Overview
-This project is a Next.js application using various libraries and frameworks such as Tailwind CSS, TypeScript, PostCSS, and MongoDB (via Mongoose). It also utilizes VAPI AI for assistant functionalities and OpenAI for language models.
+This project is a Next.js application using various libraries and frameworks such as React, Tailwind CSS, MongoDB, and more. It includes a variety of files for configuration, API routes, components, models, and actions.
 
 ### Purpose
-The project aims to create an AI assistant named Pearl for managing an event at the Sundance Film Festival. It includes features like checking in guests, sending messages, and facilitating connections.
+The project serves as a frontend application for an AI assistant named Pearl. It includes components for interacting with users, API routes for handling requests, and models for storing user data.
 
 ### Relevant Files
-1. `/next.config.mjs`
-2. `/package.json`
-3. `/tsconfig.json`
-4. `/postcss.config.mjs`
-5. `/src/actions/assistant-actions.tsx`
-6. `/src/app/layout.tsx`
-7. `/src/app/api/check/route.ts`
-8. `/src/components/assistant-button.tsx`
-9. `/src/config/connect-DB.ts`
+- `/next.config.mjs`
+- `/package.json`
+- `/tsconfig.json`
+- `/src/actions/assistant-actions.tsx`
+- `/src/app/layout.tsx`
+- `/src/app/api/check/route.ts`
+- `/src/components/assistant-button.tsx`
+- `/src/config/connect-DB.ts`
+- `/src/models/user-model.ts`
 
 ### Source Files
-- Source files are located in the `/src` directory.
-- Specific functionalities are organized into subdirectories like `/actions`, `/app`, `/components`, `/config`, etc.
+- Source files can be found in the `/src` directory.
+- Components are located in `/src/components`.
+- API routes are in `/src/app/api`.
+- Models are in `/src/models`.
+- Actions are in `/src/actions`.
+- Configuration files are in `/src/config`.
 
-### Documentation Files
-- The main documentation is in the `/README.md` file.
-- Additional documentation might be found within individual source files as comments or JSDoc annotations.
+### Documentation
+- Documentation can be found in the `/docs` directory.
+- The main README file is located at the root of the project.
+
+This project combines frontend development with backend logic to create an interactive AI assistant application using Next.js and various supporting libraries and tools.
