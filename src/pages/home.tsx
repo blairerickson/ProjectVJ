@@ -3,14 +3,14 @@ import AssistantWrapper from '../components/assistant-wrapper';
 import { changeIframeContent } from '../assistants/assistant';
 
 const Home = () => {
-  const changeIframeContent = (url: string) => {
+  const changeIframeContentFn = (url: string) => {
     // Function implementation
   };
 
   return (
     <div>
       {/* Other components */}
-      <AssistantWrapper changeIframeContentFn={changeIframeContent} />
+      <AssistantWrapper changeIframeContentFn={changeIframeContentFn} />
     </div>
   );
 };

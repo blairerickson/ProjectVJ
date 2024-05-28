@@ -10,7 +10,13 @@ The visual design of the web page ensures that the content displayed in the ifra
 
 The implementation of the AI Web Surfing Agent involves several key components, as seen in the provided page.tsx files. The AssistantWrapper component is crucial for managing the AI interactions, including the function to change the iframe content (changeIframeContentFn). Additionally, the overall layout is designed to be responsive and user-friendly, featuring a header, a main content area with the iframe, and a footer. The integration of user data and a scroll area enhances the user experience by allowing easy navigation and interaction with different elements on the page. This thoughtful design and robust functionality make the AI Web Surfing Agent a powerful tool for enhancing web browsing through voice-based interactions.
 
+The AI Web Surfing Agent is a sophisticated voice-activated application designed to enhance online browsing experiences by embedding a dynamic voice interface directly into a web page. Upon page load, the AI voice activates, guiding users through various online content such as travel sites, image galleries, and video collections on platforms like YouTube. The application utilizes advanced GPT functions to interact with users, fetching and displaying web pages inside an iframe, making it a versatile tool for both casual browsing and specific content discovery.
 
+Key Features and Design
+
+Voice-Activated Interface: The AI voice initiates immediately as the page loads, providing a seamless and engaging user experience. It communicates actively with users, narrating what is being displayed on the screen. This feature makes the browsing experience more interactive and accessible, especially for users who prefer auditory learning or those with visual impairments.
+
+Content Management: Through the AssistantWrapper component, the AI has the capability to alter iframe content dynamically based on voice commands. This adaptability allows users to command the AI to switch between different types of web content, from viewing travel destinations to watching videos or browsing through photo galleries. The iframe, occupying a prominent space on the screen, ensures that content is the focal point of the user experience.
 ## Getting Started
 
 First, run the development server:
